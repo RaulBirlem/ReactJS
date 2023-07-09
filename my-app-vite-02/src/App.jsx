@@ -11,6 +11,7 @@ import ShowUserName from './components/ShowUserName'
 import CarDetails from './components/CarDetails'
 import Fragment from './components/Fragment'
 import Container from './components/Container'
+import ExecuteFunction from './components/ExecuteFunction'
 
 
 function App() {
@@ -22,6 +23,12 @@ function App() {
     {id:2, brand:"Fiat", color:"Branco", newCar: false, km: 8000},
     {id:3, brand:"Ford", color:"Preto", newCar: false, km: 11000}
   ]
+
+  function showMessage(){
+    console.log("Evento do componente pai!");
+  }
+
+
   return (
     <>
     {/* imagem em public */}
@@ -61,6 +68,8 @@ function App() {
      <Container myValue="testing 2">
       <p>Este é um conteúdo novo.</p>
      </Container>
+     {/* executar função passar por props */}
+     <ExecuteFunction myFunction={showMessage}/>
     </>
   )
 }
