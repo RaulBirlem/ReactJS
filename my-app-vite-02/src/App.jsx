@@ -9,6 +9,7 @@ import ListRender from './components/ListRender'
 import ManageData from './components/ManageData'
 import ShowUserName from './components/ShowUserName'
 import CarDetails from './components/CarDetails'
+import Fragment from './components/Fragment'
 
 
 function App() {
@@ -43,12 +44,15 @@ function App() {
      {/* loop array de objetos  */}
      {cars.map((car) =>(
       <CarDetails 
+      key={car.id}
       brand={car.brand} 
       color={car.color} 
       km={car.km}
       newCar={car.newCar}
       />
      ))}
+     {/* fragment */}
+     <Fragment propFragment="Teste"/>
     </>
   )
 }
