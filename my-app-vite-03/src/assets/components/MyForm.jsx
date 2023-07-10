@@ -1,6 +1,16 @@
 import './MyForm.css'
+import { useState } from 'react'
 
 const MyForm = () => {
+
+  // - gerenciar dados
+  const [name, setName] = useState();
+  const [email, setEmail] = useState();
+
+  const handleName = (e) =>{
+    setName(e.target.value);
+  }
+  console.log(name)
   return (
     <div>
         
@@ -9,7 +19,7 @@ const MyForm = () => {
         <form>
             <div>
                 <label htmlFor="name">Nome:</label>
-                <input type="text" name="name"placeholder='Digite o seu nome'/>
+                <input type="text" name="name"placeholder='Digite o seu nome' onChange={handleName}/>
             </div>
             {/* label input */}
             <label> 
