@@ -84,11 +84,31 @@ function App() {
         normalizedLetter//add
       //add wrong letter to array
       ])
+      // decrement guesses
+      setGuesses((actualGuesses) => actualGuesses - 1);
     }
-    console.log(guessedLetters);
-    console.log(wrongLetters);
-
   }
+
+  const clearLetterStates = () => {
+    setGuessedLetters([]);
+    setGuessedLetters([]);
+  }
+
+
+ //stop game if guess = 0 
+  useEffect(() => { // bug
+    //reset all stages (restart) when game over
+    if(guesses <= 0){
+      clearLetterStates();
+      setGameStage(stages[2].name);
+    }
+  
+  }, [guesses])
+  
+
+
+
+
 // restart
   const retry = () => {
     setGameStage(stages[0].name);

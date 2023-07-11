@@ -21,10 +21,10 @@ const Game = ({verifyLetter,pickedWord,pickedCategory,letters,guessedLetters,wro
         <span>Pontuação: {score}</span>
       </p>
       <h1>Adivinhe a palavra:</h1>
+      <h3>Não esqueça a acentuação das palavras!</h3>
       <h3 className="tip">
         Dica sobre a palavra: <span>{pickedCategory}</span>
       </h3>
-      <p>Você ainda tem {guesses} tentativa(s).</p>
       <div className="wordContainer">
 {/*         exibir letras */} 
           {letters.map((letter,i) => 
@@ -36,6 +36,8 @@ const Game = ({verifyLetter,pickedWord,pickedCategory,letters,guessedLetters,wro
             )
           )}
      </div>
+     <p>Você ainda tem {guesses} tentativa(s).</p>
+
      <div className="letterContainer">
       <p>Tente adivinhar uma letra da palavra:</p>
       <form onSubmit={handleSubmit}>
