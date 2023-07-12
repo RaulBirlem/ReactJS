@@ -19,6 +19,16 @@
       "name": "Meia Azul",
       "price": "7.9",
       "id": 4
+    },
+    {
+      "name": "Mouse",
+      "price": "80",
+      "id": 5
+    },
+    {
+      "name": "Cadeira",
+      "price": "140",
+      "id": 6
     }
   ]
 }

@@ -39,7 +39,17 @@ function App() {
       },
       body: JSON.stringify(product),
     })
-    
+
+    // dynamic load
+    const addedProduct = await res.json();
+    setProducts((prevProducts) => [...prevProducts, addedProduct ])
+    // não pode chamar o res pois é uma string em JSON
+    //deve transforma em objeto Javascript
+    // com addedProduct
+
+    setName("");
+    setPrice("");
+
   }
 
   return (
