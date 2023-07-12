@@ -29,6 +29,21 @@
       "name": "Cadeira",
       "price": "140",
       "id": 6
+    },
+    {
+      "name": "Arma",
+      "price": "2.400",
+      "id": 7
+    },
+    {
+      "name": "Botas",
+      "price": "250",
+      "id": 8
+    },
+    {
+      "name": "Porta",
+      "price": "2.700",
+      "id": 9
     }
   ]
 }

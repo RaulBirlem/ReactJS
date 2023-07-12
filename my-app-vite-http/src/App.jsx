@@ -12,7 +12,7 @@ function App() {
   const [products, setProducts] = useState([]);
 
   //custom hook
-  const {data: items} = useFetch(url);
+  const {data: items, httpConfig} = useFetch(url);
 
 
   const [name, setName] = useState("");
@@ -40,7 +40,7 @@ function App() {
       name,
       price
     }
-    const res = await fetch(url, {
+/*     const res = await fetch(url, {
       method: "POST",
       headers: {
         "Content-Type":"application/json"
@@ -50,11 +50,13 @@ function App() {
 
     // dynamic load
     const addedProduct = await res.json();
-    setProducts((prevProducts) => [...prevProducts, addedProduct ])
+    setProducts((prevProducts) => [...prevProducts, addedProduct ]) */
     // não pode chamar o res pois é uma string em JSON
     //deve transforma em objeto Javascript
     // com addedProduct
 
+    // refactoring POST
+    httpConfig(product, "POST");
     setName("");
     setPrice("");
 
