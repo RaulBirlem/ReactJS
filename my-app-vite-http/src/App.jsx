@@ -32,6 +32,7 @@ function App() {
       name,
       price
     }
+    console.log(product)
   }
 
   return (
