@@ -49,6 +49,16 @@
       "name": "Mouse Vermelho",
       "price": "90",
       "id": 10
+    },
+    {
+      "name": "Headeset Axe",
+      "price": "2.700",
+      "id": 11
+    },
+    {
+      "name": "Headset Axe 2",
+      "price": "2.900",
+      "id": 12
     }
   ]
 }
