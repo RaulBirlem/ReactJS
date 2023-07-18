@@ -8,12 +8,14 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 //pages
 import Home from './pages/Home'
 import About from './pages/About'
-
-//components
-import Navbar from './components/Navbar'
 import Product from './pages/Product'
 import Info from './pages/Info'
 import NotFound from './pages/NotFound'
+
+//components
+import Navbar from './components/Navbar'
+import SearchForm from './components/SearchForm'
+import Search from './pages/Search'
 
 function App() {
 
@@ -24,6 +26,8 @@ function App() {
       {/* links */}
 
       <Navbar/>
+      {/* search  */}
+      <SearchForm/>
         <Routes>
           <Route path="/" element={<Home/>}/>
           <Route path="about" element={<About/>}/>
@@ -31,6 +35,8 @@ function App() {
           <Route path="/products/:id" element={<Product/>}/>
           {/* nested routes */}
           <Route path="/products/:id/info" element={<Info/>}/>
+          {/* search */}
+          <Route path="/search" element={<Search/>}/>
           {/* no match route */}
           <Route path='*' element={<NotFound/>}/>
         </Routes>
