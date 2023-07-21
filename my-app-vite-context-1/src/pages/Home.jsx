@@ -1,20 +1,20 @@
 import "./Home.css";
-
-import { useContext } from "react";
-
-import { CounterContext } from "../context/CounterContext";
+//import { CounterContext } from "../context/CounterContext";
 import ChangeCounter from "../components/ChangeCounter";
-
-// 4 - refatorando com hook
-import { useCounterContext } from "../hooks/useCounterContext";
-import { useTitleColorContext } from "../hooks/useTitleColorContext";
+// hooks
+import {useCounterContext} from "../hooks/useCounterContext"
 
 const Home = () => {
+ // const {counter} = createContext(CounterContext);
 
-
+ //refactor context
+  const {counter} = useCounterContext()
   return (
     <div>
      <h1>Home</h1>
+     <p>Valor do context:{counter}</p>
+     {/* alterar valor */}
+     <ChangeCounter/>
     </div>
   );
 };

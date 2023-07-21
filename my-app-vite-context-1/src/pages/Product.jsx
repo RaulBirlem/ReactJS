@@ -2,7 +2,7 @@ import { useContext } from "react";
 
 import { CounterContext } from "../context/CounterContext";
 
-const Products = () => {
+const Product = () => {
   const { counter } = useContext(CounterContext);
 
   return (
@@ -13,4 +13,4 @@ const Products = () => {
   );
 };
 
-export default Products;
+export default Product;
