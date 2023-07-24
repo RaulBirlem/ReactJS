@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import styles from './Register.module.css'
 
-import { useState, useEffect } from "react-router-dom"
+//mport { useState, useEffect } from "react-router-dom"
 
 const Register = () => {
 
@@ -27,7 +27,7 @@ const Register = () => {
     console.log(user)
   }
   return (
-    <>
+  <div className={styles.register}>
       <h1>Cadastre-se para postar</h1>
       <p>Crie seu usuário e compartilhe suas histórias</p>
       <form onSubmit={handleSubmit}>
@@ -37,7 +37,7 @@ const Register = () => {
           </label>
           <label>
             <span>E-mail:</span>
-            <input type="email" name="email" required placeholder="E-mail de usuário" value={email} onChange={(e) => Email(e.target.value)} />
+            <input type="email" name="email" required placeholder="E-mail de usuário" value={email} onChange={(e) => setEmail(e.target.value)} />
           </label>
           <label>
             <span>Senha:</span>
@@ -48,8 +48,11 @@ const Register = () => {
             <input type="password" name="confirmPassword" required placeholder="Confirme a sua senha"value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
           </label>
           <button className='btn'>Cadastrar</button>
+          {error && <p className='error'>{error}</p>}
       </form>
-    </>
+   
+  </div>
+
   )
 }
 
