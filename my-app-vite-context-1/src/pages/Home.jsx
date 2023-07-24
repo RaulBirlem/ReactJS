@@ -9,6 +9,7 @@ const Home = () => {
 
  //refactor context
   const {counter} = useCounterContext()
+ 
   return (
     <div>
      <h1>Home</h1>

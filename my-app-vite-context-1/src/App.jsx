@@ -13,6 +13,7 @@ function App() {
 
   return (
     <>
+    <h1>Context</h1>
       <BrowserRouter>
         <Navbar />{/* aa */}
         <Routes>
