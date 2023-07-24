@@ -13,6 +13,18 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    setError("")
+
+    const user = {
+      displayName,
+      email,
+      password
+    }
+    if (password !== confirmPassword) {
+      setError("Senhas diferentes")
+      return
+    }
+    console.log(user)
   }
   return (
     <>
