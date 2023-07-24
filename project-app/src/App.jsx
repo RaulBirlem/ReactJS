@@ -1,12 +1,20 @@
 // MINIBLOG - Firebase - React JS
 
+
+
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+
 import './App.css'
 
 function App() {
 
   return (
     <>
-     <h1>miniblog</h1>
+     <BrowserRouter>
+      <div className="container">
+        <Routes></Routes>
+      </div>
+     </BrowserRouter>
     </>
   )
 }
