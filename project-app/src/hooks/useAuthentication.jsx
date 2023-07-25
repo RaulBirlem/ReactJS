@@ -48,6 +48,9 @@ export const useAuthentication = () => {
             await updateProfile(user, {
                 displayName: data.displayName
             })
+
+            setloading(false)
+
             return user
 
         } catch (error) {
@@ -63,11 +66,12 @@ export const useAuthentication = () => {
             } else {
                 systemErrorMessage = "Ocorreu um erro"
             }
+            setloading(false)
             setError(systemErrorMessage)
 
         }
 
-        setloading(false)
+       
     }
 
     useEffect(() => {
