@@ -10,6 +10,7 @@ import {
    /*  signInWithEmailAndPassword, */
     updateProfile,
     signOut,
+    signInWithEmailAndPassword,
  
     
     
@@ -82,6 +83,31 @@ export const useAuthentication = () => {
         signOut(auth);
     }
 
+    //login
+    const login = async(data) => {
+        checkIfIsCancelled()//check memory leak
+        
+        setloading(true)
+        setError(false)
+
+        try {
+            await signInWithEmailAndPassword(auth,data.email, data.password)
+            setloading(false)
+        } catch (error) {
+            let systemErrorMessage
+
+            if (error.message.includes("user-not-found")) {
+
+                systemErrorMessage = "Usuário não encontrado."
+            } else if(error.message.includes("wrong-password")){
+                systemErrorMessage = "Senha incorreta."
+            }else {
+                systemErrorMessage = "Ocorreu um erro."
+            }
+            setError(systemErrorMessage)//send error to component 
+            setloading(false)
+        }
+    }
 
 
 
@@ -98,5 +124,6 @@ export const useAuthentication = () => {
         error,
         loading,
         logout,
+        login
     }
 }
