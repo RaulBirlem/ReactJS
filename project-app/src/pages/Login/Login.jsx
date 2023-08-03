@@ -34,7 +34,7 @@ const Login = () => {
   },[authError])
 
   return (
-    <div>
+    <div className={styles.login}>
       <h1>Entrar  </h1>
       <p>Faça o login para acessar sua página</p>
       <form onSubmit={handleSubmit}>
