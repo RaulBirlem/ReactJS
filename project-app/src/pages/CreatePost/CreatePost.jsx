@@ -17,6 +17,11 @@ const CreatePost = () => {
   const {user} = useAuthValue()
   const {insertDocument, response} = useInsertDocument("posts");//criar collection
 
+  const navigate = useNavigate()
+
+
+
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setFormError("")
@@ -29,9 +34,11 @@ const CreatePost = () => {
     }
 
     //array tags
-
+    const tagsArray = tags.split(",").map((tag) => tag.trim().toLowerCase());
     //check values
-
+    if(!title || !image || !tags || !body){
+      setFormError("Por favor, preencha todos os campos.")
+    }
 
     if(formError) return; // se tiver formError 
     //continua a inserção do post
@@ -40,12 +47,13 @@ const CreatePost = () => {
       title,
       image,
       body,
-      tags,
+      tagsArray,
       uid:user.uid,
       createdBy: user.displayName
     })
 
     //redirect to home page
+    navigate("/")
   }
 
   return (
