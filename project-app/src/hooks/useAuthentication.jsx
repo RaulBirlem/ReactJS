@@ -14,7 +14,7 @@ import {
  
     
     
-} from "firebase/auth"
+} from "firebase/auth";
 
 import { useState, useEffect} from "react"
 
