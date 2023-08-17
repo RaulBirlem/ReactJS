@@ -1,7 +1,7 @@
 
 import { useState, useEffect} from 'react'
 import { db } from '../firebase/config'
-import {collection,query,orderBy,onSnapshot,where,} from 'firebase/firestore'
+import {collection,query,orderBy,onSnapshot,/* where, */} from 'firebase/firestore'
 
 
 export const useFetchDocuments = (docCollection, search = null, uid = null) =>{
@@ -70,6 +70,6 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) =>{
         //montar dados apenas quando necessário
     },[])
 
-    return documents,loading,error;
+    return {documents,loading,error};
 
 }
