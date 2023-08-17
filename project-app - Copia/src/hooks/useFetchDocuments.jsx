@@ -1,7 +1,7 @@
 
 import { useState, useEffect} from 'react'
 import { db } from '../firebase/config'
-import {collection,query,orderBy,onSnapshot,where,} from 'firebase/firestore'
+import {collection,query,orderBy,onSnapshot,/* where, */} from 'firebase/firestore'
 
 
 export const useFetchDocuments = (docCollection, search = null, uid = null) =>{
@@ -30,10 +30,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) =>{
                 //dashboard
 
                 if (search) {
-                     q = await query(collectionRef, 
-                        where("tags", "array-contains", search), 
-                        orderBy("createdAt", "desc"))
-                     //buscar mais recentes
+                     
                 } else {
                     q = await query(collectionRef, orderBy('createdAt','desc'))
 
