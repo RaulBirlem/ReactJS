@@ -70,6 +70,6 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) =>{
         //montar dados apenas quando necessário
     },[])
 
-
+    return documents,loading,error;
 
 }
