@@ -1,4 +1,4 @@
-
+import styles from './Search.module.css'
 
 //hooks
 import { useFetchDocuments } from '../../hooks/useFetchDocuments'
@@ -15,26 +15,27 @@ const Search = () => {
     // buscar atributo cadastrado
 
     const {documents: posts } = useFetchDocuments("posts",search)
-  return (
-    <div>
+    
+    return (
+    <div className={styles.search_container}>
         <h2>Search</h2>
         
-        <div>
-            {posts && posts.length === 0 && (
-                <>
-                    <p>Nada encontrado!</p>
-                    <Link to="/" className="btn btn-dark">
-                        Voltar
-                    </Link>
-                </>
-            )}
-            {posts && posts.map((post) => (
-                <PostDetail key={post.id}
-                post={post} 
-            />))}
+            <div>
+                {posts && posts.length === 0 && (
+                    <div className={styles.noposts}>
+                        <p>Nada encontrado!</p>
+                        <Link to="/" className="btn btn-dark">
+                            Voltar
+                        </Link>
+                    </div>
+                )}
+                {posts && posts.map((post) => (
+                    <PostDetail key={post.id}
+                    post={post} 
+                />))}
+           </div>
         </div>
-    </div>
-  )
-}
+     ) 
+    }
 
 export default Search
