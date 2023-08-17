@@ -69,7 +69,7 @@ export const useFetchDocuments = (docCollection, search = null, uid = null) =>{
         loadData()
         // caso algum dado seja alterado
         //atualiza
-    },[docCollection, search,uid,cancelled])
+    },[docCollection,documents, search,uid,cancelled])
 
 
     useEffect(() => {
