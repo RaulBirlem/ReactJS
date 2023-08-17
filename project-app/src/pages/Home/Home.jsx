@@ -11,7 +11,7 @@ import { useState } from 'react'
 
 const Home = () => {
 
-  const [query, setQuery] = useState("")//busca
+ const [query, setQuery] = useState("")//busca
  const [posts] = useState([])
   const handleSubmit = (e) => {
     e.preventDefault()
