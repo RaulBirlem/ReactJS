@@ -36,4 +36,47 @@ const App = () => {
         fetchUsuarios();
     }
    }
+
+   //Renderização
+
+   return (
+    <div>
+        <h1>CRUD com React JS, MySQL e Axios</h1>
+
+        <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nome</th>
+                <th>Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              {usuarios.map((usuario) => (
+                <tr key={usuario.id}>
+                  <td>{usuario.id}</td>
+                  <td>{usuario.nome}</td>
+                  <td>{usuario.email}</td>
+                  <td>
+                    <button onClick={() => updateUsuario(usuario.id, 'Novo nome', 'novo@email.com')}>
+                      Atualizar
+                    </button>
+                    <button onClick={() => deleteUsuario(usuario.id)}>
+                      Excluir
+                    </button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+        </table>
+
+        <form onSubmit ={(event) => addUsuario(event.target.nome.value, event.target.email.value)}>
+          <input type='text' name='nome' placeholder='Nome'/>
+          <input type='email' name='email' placeholder='Email'/>
+          <button type='submit'>Adicionar</button>
+        </form>
+    </div>
+   )
 }
+
+export default App;
