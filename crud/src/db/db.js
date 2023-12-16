@@ -47,5 +47,19 @@ app.post('/', (req,res) => {
 });;
 
 
-
+app.put('/', (req, res) => {
+    // Atualizando um registro no banco de dados
+    const { id, nome, email } = req.body;
+    const sql = `UPDATE usuarios SET nome = ?, email = ? WHERE id = ?`;
+    connection.query(sql, [nome, email, id], (err, result) => {
+      if (err) {
+        res.sendStatus(500);
+      } else {
+        res.json({
+          success: true,
+          message: 'Registro atualizado com sucesso',
+        });
+      }
+    });
+  });
 
