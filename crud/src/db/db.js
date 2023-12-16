@@ -12,7 +12,21 @@ const connection = mysql2.createConnection({
     password:'root'
 });
 
-
+//Iniciando servidor
+app.listen(3000, () => {
+    console.log(`Servidor iniciado na porta 3000`);
+});
 
 
 //Rotas CRUD
+app.get('/', (req,res) => {
+    //Recuperando os registros do db
+    connection.query('SELECT * FROM usuarios', (err, results) =>{
+        if(err) {
+            res.sendStatus(500);
+        } else {
+            res.json(results);
+        }
+    });
+});
+
