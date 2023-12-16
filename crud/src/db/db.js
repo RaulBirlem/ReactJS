@@ -30,3 +30,22 @@ app.get('/', (req,res) => {
     });
 });
 
+app.post('/', (req,res) => {
+    //Novo registro no db
+    const {nome, email} = req.body;
+    const sql = 'INSERT INTO usuarios (nome, email) VALUES (?, ?)';
+    connection.query(sql, [nome, email], (err, result)=> {
+        if(err){
+            res.sendStatus(500);
+        } else {
+            res.json({
+                success:true,
+                message:'Dados inseridos com sucesso',
+            });
+        }
+    });
+});;
+
+
+
+
