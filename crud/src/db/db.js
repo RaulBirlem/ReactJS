@@ -46,7 +46,6 @@ app.post('/', (req,res) => {
     });
 });;
 
-
 app.put('/', (req, res) => {
     // Atualizando um registro no banco de dados
     const { id, nome, email } = req.body;
@@ -63,3 +62,19 @@ app.put('/', (req, res) => {
     });
   });
 
+
+app.delete('/:id', (req, res) => {
+    // Deletando um registro no banco de dados
+    const id = req.params.id;
+    const sql = `DELETE FROM usuarios WHERE id = ?`;
+    connection.query(sql, [id], (err, result) => {
+    if (err) {
+        res.sendStatus(500);
+    } else {
+        res.json({
+        success: true,
+        message: 'Registro excluído com sucesso',
+        });
+    }
+    });
+});
