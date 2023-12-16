@@ -13,6 +13,14 @@ const App = () => {
         const response = await axios.get(`${apiUrl}/usuarios`);
         setUsuarios(response.data);
     };
+    //Adicionando um novo registro
+    const addUsuario = async (nome, email) => {
+        const response = await axios.post(`${apiUrl}/usuarios`, {nome, email});
+        if(response.data.success) {
+            fetchUsuarios();
+        }
+    }
 
+   
     
 }
