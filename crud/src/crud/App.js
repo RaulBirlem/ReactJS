@@ -21,6 +21,12 @@ const App = () => {
         }
     }
 
-   
+   //Atualizando um registro
+   const updateUsuario = async ( id, nome, email) => {
+    const response = await axios.put(`${apiUrl}/usuarios/${id}`, {nome, email});
+    if(response.data.success) {
+        fetchUsuarios();
+    }
+   }
     
 }
