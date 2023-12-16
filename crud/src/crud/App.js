@@ -29,4 +29,11 @@ const App = () => {
     }
    }
     
+   //Deletando um registro
+   const deleteUsuario = async (id) => {
+    const response = await axios.delete(`${apiUrl}/usuarios/${id}`);
+    if(response.data.success) {
+        fetchUsuarios();
+    }
+   }
 }
