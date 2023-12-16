@@ -13,6 +13,13 @@ const app = express();
 app.use(express.json())
 app.use(express.urlencoded({extended:false}))
 
+
+// routes
+const router = require("./routes/Router.js")
+
+app.use(router);
+
+
 app.listen(port, () => {
     console.log(`${port}`)
 })
