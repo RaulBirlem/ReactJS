@@ -3,19 +3,19 @@ const dbUser = process.env.DB_USER;
 const dbPassword = process.env.DB_PASS;
 
 const conn = async () => {
-    try {
-        const dbConn = await mongoose.connect(
-            `mongodb+srv://${dbUser}:${dbPassword}@cluster0.cfybwde.mongodb.net/?retryWrites=true&w=majority`
-        )
+  try {
+    const dbConn = await mongoose.connect(
+      /* 1 */
+      `mongodb+srv://raul:<password>@cluster.11rsdh2.mongodb.net/?retryWrites=true&w=majority`
+    );
+    console.log("Conectou ao banco de dados!");
 
-        console.log("Conectado ao banco")
-        return dbConn
-    } catch (error) {
-        console.log("Erro ao conectar ao banco de dados:", error);
-     
-    }
-}
+    return dbConn;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-conn()
+conn();
 
 module.exports = conn;
