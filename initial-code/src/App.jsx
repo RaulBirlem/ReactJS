@@ -105,7 +105,10 @@ function App() {
 
                 { items.map(item=> 
                     
-                  <Item item={item} key={item.id}/>
+                  <Item 
+                    selectProduct={(id) => alert(`id: ${id}`)}
+                    item={item} 
+                    key={item.id}/>
                     
                 ) }
 
