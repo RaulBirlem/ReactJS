@@ -1,4 +1,8 @@
 import './App.css';
+import OrderDetails from './components/OrderDetails';
+
+
+
 
 function App() {
 
@@ -86,6 +90,10 @@ function App() {
         }
     ];
 
+    /* array de itens adicionados: */
+    const itemsInBag = items.filter(item => item.isInBag);
+    console.log(itemsInBag);
+
     const shopName = "Jersey Shop Made with React JS"
 
 
@@ -119,8 +127,7 @@ function App() {
              
             </section>
             
-
-           
+           {itemsInBag.length > 0 &&  <OrderDetails />}
             
         </>
     );

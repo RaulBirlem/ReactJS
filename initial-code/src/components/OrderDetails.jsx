@@ -4,7 +4,7 @@ const OrderDetails = () => {
   return (
     <>
          <section className="summary">
-                <strong>Order Details</strong>
+                <strong>Order Summary</strong>
                 <table>
                     <thead>
                         <tr>
