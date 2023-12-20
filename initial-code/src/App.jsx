@@ -1,12 +1,18 @@
 import './App.css';
 import OrderDetails from './components/OrderDetails';
 import Item from './components/Item';
+import { useState } from 'react';
 
 
 
 function App() {
+    const shopName = "Jersey Shop Made with React JS"
 
-    const items = [
+
+
+
+
+    const [items, setItems] = useState([
         {
             
             id: 1, 
@@ -15,7 +21,7 @@ function App() {
             price: 119.99,
             active: false,
             quantity: 1, 
-            isInBag: true
+            isInBag: false
         },
         {
             id: 2, 
@@ -88,13 +94,17 @@ function App() {
             quantity: 1, 
             isInBag: false
         }
-    ];
+    ]);
 
     /* array de itens adicionados: */
     const itemsInBag = items.filter(item => item.isInBag);
     console.log(itemsInBag);
 
-    const shopName = "Jersey Shop Made with React JS"
+    function selectHandler(id) {
+        let item = items.filter(item =>item.id === id)[0];
+        item.isInBag = !item.isInBag;
+        setItems(items.map(elemento => elemento.id === id ? item : elemento));
+    }
 
 
     return ( 
@@ -106,7 +116,7 @@ function App() {
                 { items.map(item=> 
                     
                   <Item 
-                    selectProduct={(id) => alert(`id: ${id}`)}
+                    selectProduct={(id) => selectHandler(id)}
                     item={item} 
                     key={item.id}/>
                     
