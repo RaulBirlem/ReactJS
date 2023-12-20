@@ -1,6 +1,6 @@
 import './Todo.scss';
 import { useContext } from 'react';
-import { TodosContext } from '../TodosContext';
+import { TodosContext } from '../TodosContext.jsx';
 
 
 
