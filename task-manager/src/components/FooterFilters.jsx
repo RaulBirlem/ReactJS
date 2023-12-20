@@ -1,4 +1,4 @@
-import classes from './FooterFilters.module.scss';
+import classes from './FooterFilters.module.scss'; //não conflita com outros scss
 
 function FooterFilters() {
 
