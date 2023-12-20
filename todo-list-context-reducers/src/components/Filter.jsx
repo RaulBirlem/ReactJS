@@ -1,6 +1,18 @@
 import './Filter.scss';
+import { useTodos } from '../TodosContext.jsx';
+
+
+
+
+
+
+
+
+
 
 function Filter() {
+   
+    const storeContext = useTodos();
 
     return (
     <>
@@ -8,15 +20,19 @@ function Filter() {
             <div>
                 <p>Filter by state</p>
                 <div className="badges">
-                    <div className="badge selected">
+                    <div className={`badge ${storeContext.filterBy === 'todo' ? 'selected' : ''}`}>
                         To-Do
                     </div>
-                    <div className="badge">
+                    <div className={`badge ${storeContext.filterBy === 'done' ? 'selected' : ''}`}>
                         Done
                     </div>
-                    <span className="clear">
+                    {
+                        storeContext.filterBy && 
+                        <span className="clear">
                         x clear
                     </span>
+                    }
+                    
                 </div>
             </div>
         </div>

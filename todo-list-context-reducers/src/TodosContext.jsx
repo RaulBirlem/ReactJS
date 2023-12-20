@@ -16,6 +16,7 @@ const initialTodos = [
     const [todos, dispatch] = useReducer(todosReducer, initialTodos);
     /* dispatch passa a action e id */
     const [modelIsActive, setModelIsActive] = useState(false);
+    const [filterBy, setFilterBy] = useState('');
 
 
   
@@ -24,7 +25,8 @@ const initialTodos = [
         <main>
           <TodosContext.Provider 
           value={
-            {todos, dispatch, modelIsActive, setModelIsActive}}>
+            {todos, dispatch, modelIsActive, setModelIsActive,
+              filterBy, setFilterBy}}>
                 {children}
           </TodosContext.Provider>
   
@@ -47,7 +49,16 @@ const initialTodos = [
             if(confirm('Are you sure you want delete the to-do?')){
                 return todos.filter(todo => todo.id !== action.id);
             }
+           break; 
         }
+        case 'added':{
+          let newTodo = action.newTodo;
+          newTodo.id = todos.length ? Math.max(...todos.map(todo =>todo.id)) +1 : 1;
+/* pega o maior id e incrementa\\ se tiver vazio recebe 1 */
+          console.log(newTodo)
+          return [...todos, newTodo];
+              
+      }
         case 'toggledIsDone':{
             return (todos.map(todo => {
                 if (todo.id === action.id){
@@ -57,6 +68,7 @@ const initialTodos = [
                   return todo;
                 }
               }));
+              
         }
     }
    
