@@ -21,12 +21,12 @@ function TodosList() {
     <>
         <div className="todos">
 
-            {storeContext.todos.map(todo => 
+            {storeContext.filteredTodos().length ? storeContext.filteredTodos().map(todo => 
               <Todo
               todo={todo}/* prop */
               key={todo.id}
             />
-            )}
+            ) : 'Nenhuma tarefa feita!'}
             
 
         </div>

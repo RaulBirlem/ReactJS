@@ -1,24 +1,40 @@
-import { createContext, useReducer, useContext, useState } from "react";
+import { createContext, useReducer, useContext, useState, useEffect } from "react";
 
 export const TodosContext = createContext("")
 
 
 
-const initialTodos = [
-    { id: 0, title: 'Do Groceries', description: 'Buy apples, rice, juice and toilet paper.', isDone: false },
-    { id: 1, title: 'Study React', description: 'Understand context & reducers.', isDone: false},
-    { id: 2, title: 'Learn Redux', description: 'Learn state management with Redux', isDone: false }
-  ];
+const initialTodos = localStorage.getItem('todos') ?
+ JSON.parse(localStorage.getItem('todos')) : [];
 
   
   export function TodosProvider({children}) {
-  
+
+
+ 
     const [todos, dispatch] = useReducer(todosReducer, initialTodos);
     /* dispatch passa a action e id */
     const [modelIsActive, setModelIsActive] = useState(false);
     const [filterBy, setFilterBy] = useState('');
 
+    function filteredTodos(){
+      switch(filterBy){
+        case 'todo':
+          return todos.filter(todo => !todo.isDone);
+        case 'done':
+          return todos.filter(todo => todo.isDone);
 
+        default:
+         return todos;
+      }
+    }
+
+
+    useEffect(()=>{
+      localStorage.setItem('todos', JSON.stringify(todos))
+    },[todos]);
+
+    
   
     return (
       <>
@@ -26,7 +42,7 @@ const initialTodos = [
           <TodosContext.Provider 
           value={
             {todos, dispatch, modelIsActive, setModelIsActive,
-              filterBy, setFilterBy}}>
+              filterBy, setFilterBy, filteredTodos}}>
                 {children}
           </TodosContext.Provider>
   
@@ -48,17 +64,19 @@ const initialTodos = [
         case 'deleted':{
             if(confirm('Are you sure you want delete the to-do?')){
                 return todos.filter(todo => todo.id !== action.id);
+            }else {
+              return todos;
             }
-           break; 
         }
+
         case 'added':{
           let newTodo = action.newTodo;
           newTodo.id = todos.length ? Math.max(...todos.map(todo =>todo.id)) +1 : 1;
 /* pega o maior id e incrementa\\ se tiver vazio recebe 1 */
           console.log(newTodo)
-          return [...todos, newTodo];
-              
+          return [...todos, newTodo]; 
       }
+      
         case 'toggledIsDone':{
             return (todos.map(todo => {
                 if (todo.id === action.id){
