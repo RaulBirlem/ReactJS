@@ -12,7 +12,7 @@ function Home() {
             <TodosList />
         </div>
 
-        <FooterFilters/>
+        <FooterFilters isFirst={true}/>
 
 
 
