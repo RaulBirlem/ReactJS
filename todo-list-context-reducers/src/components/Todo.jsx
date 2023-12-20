@@ -1,12 +1,30 @@
 import './Todo.scss';
+import { useContext } from 'react';
+import { TodosContext } from '../TodosContext';
 
-function Todo({ todo, deleteTodo, toggleIsDone }) {
+
+
+
+
+
+
+function Todo({ todo }) {
+
+
+    const storeContext = useContext(TodosContext);
+
+
+
+
 
   return (
     <>
         <div className={`todo ${todo.isDone ? 'done' : ''}`}>
             <button 
-                onClick={()=> deleteTodo(todo.id)}
+                onClick={()=> storeContext.dispatch({
+                    type:'deleted',
+                    id: todo.id
+                  })}
                 className="erase"
             >
                 x erase
@@ -19,7 +37,10 @@ function Todo({ todo, deleteTodo, toggleIsDone }) {
             </p>
             <div className="task-check">
                 <input 
-                    onClick={()=> toggleIsDone(todo.id)}
+                    onClick={()=> storeContext.dispatch({
+                        type:'toggledIsDone',
+                        id: todo.id
+                      })}
                     type="checkbox" 
                     defaultChecked={todo.isDone}
                  />

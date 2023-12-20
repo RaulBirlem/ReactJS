@@ -10,23 +10,6 @@ function TodosList() {
   const storeContext = useContext(TodosContext);
 
 
-  function deleteHandler(id){
-      storeContext.dispatch({
-        type:'deleted',
-        id: id
-      });
-      //storeContext.setTodos(storeContext.todos.filter(todo => todo.id !== id));
-    }
-  
-
-
-  function toggleIsDoneHandler(id){
-    storeContext.dispatch({
-      type:'toggledIsDone',
-      id: id
-    });
-    }
-  
 
 
 
@@ -41,8 +24,6 @@ function TodosList() {
 
             {storeContext.todos.map(todo => 
               <Todo
-              deleteTodo={(id)=> deleteHandler(id)}
-              toggleIsDone={(id)=> toggleIsDoneHandler(id)}
               todo={todo}/* prop */
               key={todo.id}
             />
