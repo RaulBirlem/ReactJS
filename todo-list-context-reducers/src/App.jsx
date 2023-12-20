@@ -1,10 +1,10 @@
 import Header from './components/Header.jsx';
 import Home from './views/Home.jsx';
 import { TodosContext } from './TodosContext.js';
-
+import { useReducer } from 'react';
+import todosReducer from './TodosReducer.js';
 
 import './App.scss';
-import { useState } from 'react';
 
 
 
@@ -24,8 +24,8 @@ const initialTodos = [
 
 function App() {
 
-const [todos, setTodos] = useState(initialTodos);
-
+  const [todos, dispatch] = useReducer(todosReducer, initialTodos);
+  /* dispatch passa a action e id */
 
 
 
@@ -33,7 +33,7 @@ const [todos, setTodos] = useState(initialTodos);
   return (
     <>
       <main>
-        <TodosContext.Provider value={{todos, setTodos}}>
+        <TodosContext.Provider value={{todos, dispatch}}>
           <Header appName="To-Do List with React" />
 
            <Home />

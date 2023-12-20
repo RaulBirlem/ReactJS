@@ -12,7 +12,8 @@ function TodosList() {
 
   function deleteHandler(id){
     if(confirm('Are you sure you want delete the to-do?')){
-      storeContext.setTodos(storeContext.todos.filter(todo => todo.id !== id));
+      storeContext.dispatch();
+      //storeContext.setTodos(storeContext.todos.filter(todo => todo.id !== id));
     }
   }
 
