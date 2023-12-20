@@ -1,11 +1,11 @@
-import { createContext, useReducer } from "react";
+import { createContext, useReducer, useContext, useState } from "react";
 
 export const TodosContext = createContext("")
 
 
 
 const initialTodos = [
-    { id: 0, title: 'Do Groceries', description: 'Buy apples, rice, juice and toilet paper.', isDone: true },
+    { id: 0, title: 'Do Groceries', description: 'Buy apples, rice, juice and toilet paper.', isDone: false },
     { id: 1, title: 'Study React', description: 'Understand context & reducers.', isDone: false},
     { id: 2, title: 'Learn Redux', description: 'Learn state management with Redux', isDone: false }
   ];
@@ -15,14 +15,16 @@ const initialTodos = [
   
     const [todos, dispatch] = useReducer(todosReducer, initialTodos);
     /* dispatch passa a action e id */
-  
-  
-  
+    const [modelIsActive, setModelIsActive] = useState(false);
+
+
   
     return (
       <>
         <main>
-          <TodosContext.Provider value={{todos, dispatch}}>
+          <TodosContext.Provider 
+          value={
+            {todos, dispatch, modelIsActive, setModelIsActive}}>
                 {children}
           </TodosContext.Provider>
   
@@ -31,7 +33,12 @@ const initialTodos = [
       </>
     )
   }
-  
+
+
+    export function useTodos() {
+        return useContext(TodosContext);
+    }
+
 
  function todosReducer(todos,action){
 
