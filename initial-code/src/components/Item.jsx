@@ -1,12 +1,8 @@
 
 
-const Item = ({item, selectProduct}) => {
+const Item = ({item, selectProduct, changeQuantity}) => {
 
-    function quantityHandler(e){
-        e.stopPropagation();
-        alert('Change Quantity')
-    }
-
+    
 
 
 
@@ -21,9 +17,9 @@ const Item = ({item, selectProduct}) => {
                             <span className="price">{item.price}</span>
                         {   item.isInBag && /* se isInBag for false ele não exibe */
                             <div className="quantity-area">
-                                <button onClick={(e)=>quantityHandler(e)}>-</button>
+                                <button disabled={item.quantity<=1} onClick={(e)=>changeQuantity(e, item.id, -1)}>-</button>
                                 <span className="quantity">{item.quantity}</span>
-                                <button onClick={quantityHandler}>+</button>
+                                <button onClick={(e)=>changeQuantity(e, item.id, +1)}>+</button>
                             </div>
                         }
                         </div>

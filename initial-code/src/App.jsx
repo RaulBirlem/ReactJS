@@ -104,8 +104,16 @@ function App() {
         let item = items.filter(item =>item.id === id)[0];
         item.isInBag = !item.isInBag;
         setItems(items.map(elemento => elemento.id === id ? item : elemento));
+  
     }
 
+    function quantityHandler(e, id, increment){
+        e.stopPropagation();
+        let item = items.filter(item =>item.id === id)[0];
+        item.quantity += increment;
+        setItems(items.map(elemento => elemento.id === id ? item : elemento));
+  
+    }
 
     return ( 
         <>
@@ -117,6 +125,7 @@ function App() {
                     
                   <Item 
                     selectProduct={(id) => selectHandler(id)}
+                    changeQuantity={(e, id, increment)=>quantityHandler(e, id, increment)}
                     item={item} 
                     key={item.id}/>
                     
