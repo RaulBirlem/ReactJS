@@ -1,6 +1,6 @@
-
-
 import {createSlice} from '@reduxjs/toolkit'
+
+
 
 export const booksSlice = createSlice ({
     name:'books',
@@ -49,11 +49,17 @@ export const booksSlice = createSlice ({
             eraseBook:(books, action)=>{
               /* action busca id enviado pelo dispatch */
               return books.filter(book => book.id != action.payload);
+            },
+            toggleRead:(books, action)=>{
+              /* n altera array original, n precisa return */
+              books.map(book => {
+                if (book.id == action.payload)
+              book.isRead = !book.isRead});
             }
         }
     })
 
-export const {addBook,eraseBook} = booksSlice.actions;
+export const {addBook,eraseBook,toggleRead} = booksSlice.actions;
 export const selectBooks = state => state.books;
 export default booksSlice.reducer;
 
