@@ -43,15 +43,17 @@ export const booksSlice = createSlice ({
           }
         ],
         reducers: {
-            addBook: books =>{
-                /* add books */
+            addBook: (books, action) =>{
+                let newBook = action.payload;
+                newBook.id = books.length ? Math.max(...books.map(book => book.id))+1 : 1
+                books.push(newBook);
             },
             eraseBook:(books, action)=>{
               /* action busca id enviado pelo dispatch */
               return books.filter(book => book.id != action.payload);
             },
             toggleRead:(books, action)=>{
-              /* n altera array original, n precisa return */
+              /* altera array original, n precisa return */
               books.map(book => {
                 if (book.id == action.payload)
               book.isRead = !book.isRead});

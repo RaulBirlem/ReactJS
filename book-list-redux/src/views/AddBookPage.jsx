@@ -1,14 +1,34 @@
 import Header from '../components/Header.jsx';
 import { useNavigate } from 'react-router-dom';
+import {  useDispatch } from 'react-redux';
+import { addBook } from '../store/booksSlice.js';
+
 
 function AddBookPage() {
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const pageTitle = "Add Book";
     function handleAddBook(e){
         e.preventDefault;
-        navigate("/"); /* retorna ao inicio */
-        alert("Adicionado!")
+
+        const newBook = {
+            title:document.querySelector('input[name=title]').value,
+            cover:document.querySelector('input[name=cover]').value,
+            isRead:false,
+            author:document.querySelector('input[name=author]').value,
+            synopsis:document.querySelector('textarea[name=synopsis]').value, 
+        }
+
+        if (newBook.title && newBook.cover && newBook.author){
+            dispatch(addBook(newBook))
+            alert("Adicionado!")
+            navigate("/"); /* retorna ao inicio */
+        }else {
+            alert('Preencha os campos obrigatórios!');
+        }
+       
+      
     }
     return (
       <>
