@@ -15,6 +15,7 @@ const initialTodos = localStorage.getItem('todos') ?
     const [todos, dispatch] = useReducer(todosReducer, initialTodos);
     /* dispatch passa a action e id */
     const [modelIsActive, setModelIsActive] = useState(false);
+    const [modelEditIsActive, setModelEditIsActive] = useState(false);
     const [filterBy, setFilterBy] = useState('');
 
     function filteredTodos(){
@@ -42,7 +43,7 @@ const initialTodos = localStorage.getItem('todos') ?
           <TodosContext.Provider 
           value={
             {todos, dispatch, modelIsActive, setModelIsActive,
-              filterBy, setFilterBy, filteredTodos}}>
+              filterBy, setFilterBy,setModelEditIsActive,modelEditIsActive, filteredTodos}}>
                 {children}
           </TodosContext.Provider>
   
@@ -56,17 +57,15 @@ const initialTodos = localStorage.getItem('todos') ?
     export function useTodos() {
         return useContext(TodosContext);
     }
-
+ 
 
  function todosReducer(todos,action){
 
     switch(action.type){
         case 'deleted':{
-            if(confirm('Remover tarefa?')){
-                return todos.filter(todo => todo.id !== action.id);
-            }else {
-              return todos;
-            }
+            
+            return todos.filter(todo => todo.id !== action.id);
+            
         }
 
         case 'added':{
@@ -76,7 +75,27 @@ const initialTodos = localStorage.getItem('todos') ?
           console.log(newTodo)
           return [...todos, newTodo]; 
       }
+
+     
+      case 'edited': {
+        const updatedTodos = todos.map(todo => {
+          if (todo.id === action.id) {
+            // Cria um novo todo com os campos atualizados
+            const updatedTodo = {
+              id: todo.id,
+              title: action.newTitle,
+              description: action.newDescription,
+              isDone: todo.isDone
+            };
+            return updatedTodo; // Retorna o novo todo atualizado
+          }
+          return todo; // Mantém os outros todos inalterados
+        });
       
+        return [...updatedTodos]; // Retorna a lista de todos atualizada
+      }
+      
+
         case 'toggledIsDone':{
             return (todos.map(todo => {
                 if (todo.id === action.id){

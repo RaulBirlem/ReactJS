@@ -17,6 +17,19 @@
         text-decoration: line-through;
     }
 
+    button.edit{
+        cursor: pointer;
+        background-color: var(--primary-color);
+        padding: 4px;
+        color: #ffff;
+        border-radius: 2px;
+    }
+    button.edit:hover{
+        background-color: var(--primary-color); 
+        /* box-shadow: 10px 5px 5px #0A7AFF; */
+        box-shadow: 1px 1px 5px 2px #013a81;
+    }
+
     button.erase {
         background-color: transparent;
         position: absolute;
@@ -52,7 +65,7 @@
         letter-spacing: 0em;
         text-align: left;
     }
-
+   
     .task-check {
         display: flex;
         align-items: center;
@@ -61,13 +74,15 @@
 
         label {
             font-size: 13px;
-            font-weight: 400;
+            font-weight: 600;
             line-height: 16px;
             letter-spacing: 0em;
             text-align: left;
             margin-left: 5px;
+            margin-right: 10px;
             cursor: pointer;
         }
+
 
         input {
             display: flex;

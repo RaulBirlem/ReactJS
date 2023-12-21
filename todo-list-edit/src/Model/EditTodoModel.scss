@@ -1,0 +1,41 @@
+
+.formEdit {
+    display: flex;
+    flex-direction: column;
+    max-width: 65%;
+    border-color: rgb(90, 15, 15);
+    padding: 5px;
+    border-radius: 10px;
+    label {
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 16px;
+      letter-spacing: 0em;
+      text-align: left;
+    }
+
+    input,
+    select,
+    textarea {
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 16px;
+      letter-spacing: 0em;
+      text-align: left;
+      border: 1px solid rgba(0, 0, 0, 0.153);
+      border-radius: 4px;
+      padding: 8px 12px;
+      margin-top: 5px;
+
+      &::placeholder {
+        color: #A6A6A6;
+      }
+    }
+
+    
+
+    .btn {
+      width: fit-content;
+      padding-inline: 23px;
+    }
+  }

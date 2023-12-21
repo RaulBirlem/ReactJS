@@ -1,5 +1,7 @@
 import './Todo.scss';
 import { useTodos } from '../TodosContext.jsx';
+import { useState } from 'react';
+import EditTodoModel from '../Model/EditTodoModel.jsx';
 
 
 
@@ -11,7 +13,12 @@ function Todo({ todo }) {
 
 
     const storeContext = useTodos();
+    const [isEditing, setIsEditing] = useState(false);
 
+    function handleEditClick() {
+        setIsEditing(prevState => !prevState);
+         // Alterna o estado de edição
+    }
 
 
 
@@ -34,7 +41,9 @@ function Todo({ todo }) {
             <p>
                 {todo.description}
             </p>
+            
             <div className="task-check">
+           
                 <input 
                     onClick={()=> storeContext.dispatch({
                         type:'toggledIsDone',
@@ -46,9 +55,21 @@ function Todo({ todo }) {
                 <label>
                     {!todo.isDone ? 'Ativa' : 'Concluída'}
                 </label>
+                <label>
+                <button onClick={handleEditClick} className="edit">
+                    {isEditing ? 'Ok' : 'Editar'}
+                    
+                    </button>
+                </label>
+                    
             </div>
         </div>
-
+        {isEditing && (
+        <div className="edit-model">
+         
+         <EditTodoModel todo={todo} />
+        </div>
+      )}
     </>
   )
 }
