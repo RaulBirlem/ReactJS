@@ -13,7 +13,7 @@ function App() {
         <Routes> {/* index = path="/" */}
             <Route index element={<BooksPage/>}/>
             <Route path="/add-book" element={<AddBookPage/>}/>
-            <Route path="/book" element={<SingleBookPage/>}/>
+            <Route path="/book/:id" element={<SingleBookPage/>}/>
         </Routes>
       </BrowserRouter>
   
