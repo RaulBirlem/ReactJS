@@ -1,18 +1,12 @@
 import Book from '../components/Book.jsx';
 import Header from '../components/Header.jsx';
-import { useSelector } from 'react-redux';
-import { selectBooks } from '../store/booksSlice.js';
-
-
-
-
-
+import {useSelector} from 'react-redux';
+import {selectBooks} from '../store/booksSlice.js';
 
 function BooksPage() {
 
   const books = useSelector(selectBooks);
-
-  const pageTitle = "📖 Lista de Livros Com React Router & Redux Toolkit";
+  const pageTitle = "📖 Book List with Router, Redux & Firebase";
     
     
     return (

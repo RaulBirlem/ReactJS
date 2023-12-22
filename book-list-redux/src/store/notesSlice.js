@@ -25,19 +25,23 @@ export const notesSlice = createSlice ({
       
   ],
         reducers: {
-            addNotes: (notes, action) =>{
-                let newBook = action.payload;
-                newBook.id = notes.length ? Math.max(...notes.map(book => book.id))+1 : 1
-                notes.push(newBook);
+            addNote: (notes, action) =>{
+                let newNote = action.payload;
+                newNote.id = notes.length ? Math.max(...notes.map(note => note.id))+1 : 1
+                notes.push(newNote);
             },
             eraseNote:(notes, action)=>{
               /* action busca id enviado pelo dispatch */
-              return notes.filter(book => book.id != action.payload);
+              return notes.filter(note => note.id != action.payload);
+            },
+            eraseBookNotes:(notes, action)=>{
+              /* action busca id enviado pelo dispatch */
+              return notes.filter(note => note.book_id != action.payload);
             }
         }
     })
 
-export const {addNote,eraseNote} = notesSlice.actions;
+export const {addNote,eraseNote,eraseBookNotes} = notesSlice.actions;
 export const selectNotes = state => state.notes;
 export default notesSlice.reducer;
 

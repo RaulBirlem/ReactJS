@@ -8,9 +8,9 @@ function AddBookPage() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    const pageTitle = "Add Book";
+    const pageTitle = "Adicionar Livro";
     function handleAddBook(e){
-        e.preventDefault;
+        e.preventDefault();
 
         const newBook = {
             title:document.querySelector('input[name=title]').value,
@@ -37,27 +37,27 @@ function AddBookPage() {
 
             <form className="add-form">
                 <div className="form-control">
-                    <label>Title *</label>
-                    <input type="text" name="title" placeholder="Add Book Title" />
+                    <label>Título</label>
+                    <input type="text" name="title" placeholder="Adicionar título" />
                 </div>
                 <div className="form-control">
-                    <label>Book Cover *</label>
-                    <input type="text" name="cover" placeholder="Add Cover" />
+                    <label>Capa do Livro</label>
+                    <input type="text" name="cover" placeholder="Adicionar url da imagem" />
                 </div>
 
                 <div className="form-control">
-                <label>Author *</label>
+                <label>Autor</label>
                 <input
-                    type="text" name="author" placeholder="Add Author" />
+                    type="text" name="author" placeholder="Nome do autor" />
                 </div>
 
                 <div className="form-control">
-                <label>Synopsis *</label>
+                <label>Descrição</label>
                 <textarea
-                    type="text" name="synopsis" placeholder="Add a synopsis..." />
+                    type="text" name="synopsis" placeholder="O livro é sobre..." />
                 </div>
                 
-                <button onClick={(e)=> handleAddBook(e)} className="btn btn-block">Save Book</button>
+                <button onClick={(e)=> handleAddBook(e)} className="btn btn-block">Adicionar</button>
             </form>
 
         </div>

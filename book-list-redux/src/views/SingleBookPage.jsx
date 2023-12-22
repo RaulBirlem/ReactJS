@@ -2,6 +2,7 @@ import { useParams, Link, useNavigate } from 'react-router-dom';
 import Notes from '../components/Notes.jsx'
 import { useSelector, useDispatch } from 'react-redux';
 import { selectBooks, eraseBook, toggleRead } from '../store/booksSlice.js';
+import { eraseBookNotes } from '../store/notesSlice.js';
 
 
 
@@ -18,8 +19,9 @@ function SingleBookPage() {
     const navigate = useNavigate();
    
     function handleEraseBook(id) {
-      if (confirm('Apagar livro?')){
+      if (confirm('Apagar livro e suas notas?')){
         dispatch(eraseBook(id))/* envia o id para o action.payload */
+        dispatch(eraseBookNotes(id));
         navigate("/");
       }
     }
@@ -52,15 +54,15 @@ function SingleBookPage() {
                               <input type="checkbox"
                                 onClick={()=>{dispatch(toggleRead(book.id))}}
                                 defaultChecked={book.isRead} />
-                              <label>{ book.isRead ? "Already Read It" : "Haven't Read it yet" }</label>
+                              <label>{ book.isRead ? "Leitura concluída" : "Leitura não conluída" }</label>
                           </div>
                           <div onClick={()=>handleEraseBook(book.id)} className="erase-book">
-                              Erase book
+                              Remover Livro
                           </div>
                       </div>
               </div>
 
-            <Notes />
+            <Notes bookId={id}/>
             </div> :
             <div>
               <p>Nenhum livro encontrado.</p>
